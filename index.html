@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5922773472679987"
+    crossorigin="anonymous"></script>
+  <title>Cutrofiano | Calendario dell'avvento </title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2593621477049019"
+    crossorigin="anonymous"></script> -->
+
+</head>
+
+<body onload="load()">
+
+  <!-- <body oncontextmenu="return false;"> PER DISABILITARE IL TASTO DESTRO -->
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <!-- PER METTERE I PUNTI AL CENTRO DELL'HEAD
+        <span class="cod-block" style="color:blue;">Punti: <p id="points">0</p></span>
+       -->
+
+      <!--  PER LINK AL REGOLAMENTO
+      <p1 class="linktorules"><a class="linktorules" href=".\rules.html" style="background-color: blue;border-radius: 10px;">Regolamento 👉🏻</a></p>
+    -->
+      <img src="images/luci.gif" style="margin-top: 200px; max-width: 500px;">
+    </header>
+
+
+    <!-- Parte principale  -->
+    <main>
+      <!-- Calendario -->
+      <div style="height: 50px;"></div>
+
+  
+      <div class="calendar">
+        <!--   
+        <div class="box">
+          <img class="box-icon" src="images/icons/panettone.png" alt="icon">
+          <div class="box-date">1</div>
+        </div> 
+    -->
+
+      </div>
+      <div>
+        <h4 style="width:100%; text-align: center;">Clicca sul pulssante qui sotto per riscattare uno scontrino</h4>
+        <button type="submit" class="button button-block" onclick="sendScontrino()">Riscatta scontrino</button>
+      </div>
+      <!-- Modale -->
+
+      <div id="modal" class="modal-overlay modal-hidden">
+        <div class="modal-window">
+          <div class="modal-day"></div>
+          <p>Clicca su un'attività per riscattare il premio</p>
+
+          <div id="grid1">
+          </div>
+
+
+          <div class="modal-content"></div>
+          <!--<button class="modal-button risc" onclick="send();">RISCATTA</button>       TASTO RISCATTA NELLA MODALE           -->
+          <button class="modal-button" onclick="closeModal();">CHIUDI</button>
+        </div>
+      </div>
+  </div>
+
+  <!-- Countdown timer -->
+  <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+  <a href="https://logwork.com/countdown-857i" class="countdown-timer" data-timezone="Europe/Rome" data-language="it"
+    data-textcolor="#ffffff" data-date="2023-12-25 00:00" data-background="#e63c3c" data-digitscolor="#ffffff"
+    data-unitscolor="#ffffff">Countdown a Natale</a>
+  <div id="sponsor" style="width: 100%;">
+
+    <div style="border-radius: 0 0 12px 12px;">
+      <h2>Chi siamo:</h2>
+      <div id="show1">
+
+      </div>
+    </div>
+
+  </div>
+  <span class="cod-block">Il tuo codice utente: <p1 class="codice cod-block" id="codiceUtente"></p1></span>
+
+  </main>
+
+  <h5 style="width: 100%; text-align: center; margin-top: 30px;"> Created by Ciarli Giaffreda & Antonio Calò</h5>
+  </div>
+
+  <!-- Javascript -->
+  <script src="source.js"></script>
+  <script src="script.js"></script>
+  <script src="businesses.js"></script>
+</body>
+
+<script>
+  const show1 = document.getElementById("show1");
+  const show2 = document.getElementById("show2");
+  const show3 = document.getElementById("show3");
+
+
+
+
+  function show(i) {
+    if (i == 1) {
+      if (show1.style.display === "none") {
+        show1.style.display = "";
+      } else {
+        show1.style.display = "none";
+      }
+    } else if (i == 2) {
+      if (show2.style.display === "none") {
+        show2.style.display = "";
+      } else {
+        show2.style.display = "none";
+      }
+    } else if (i == 3) {
+      if (show3.style.display === "none") {
+        show3.style.display = "";
+      } else {
+        show3.style.display = "none";
+      }
+    }
+  }
+
+
+
+</script>
+
+</html>

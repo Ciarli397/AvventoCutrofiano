@@ -1,0 +1,86 @@
+/** COLOR PALETTE & FONT 
+* blue: #3535ec;
+* blue-dark: #120945;
+* gray: #d4d7f5;
+* green: #306753;
+* pink: #de7eb6;
+* font: Livvic, sans-serif;
+*/
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Generic rules */
+  html {
+    color: white;
+    background-color: #ffd3a9;
+    font-family: Livvic, sans-serif;
+  }
+  
+  h1 {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    padding: 32px 16px;
+  }
+  
+  .linktorules {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: right;
+    color: #810303;
+    border-radius: 12px;
+    margin-bottom: 0;
+    
+    padding: 10px 10px;
+  }
+  
+  /* Header */
+  header {
+    height: 200px;
+    background-color: #450909;
+    border-radius: 0 0 20px 20px;
+  
+    position: sticky;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 0px;
+    background-image: url('images/header-bg.png');
+  
+    z-index: 1;
+  }
+  
+  .container-rules{
+    margin-top: 10px;
+    height: auto;
+    background-color:rgb(255, 255, 255);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    text-align: center;
+    padding: 30px;
+  
+  }
+  
+  p{
+    font-size: 20px;
+    font-weight: 300;
+    color:#450909;
+    margin: 15px;
+  }
