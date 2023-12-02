@@ -186,7 +186,6 @@ function closeModal() {
 function insertModalContent(i) {
   const randomBusinessesWithPrizes = getRandomBusinesses();
 
-
   // Salva l'array nel localStorage come stringa JSON, mi serve per recuperarlo al click senza metterlo nel DOM
   localStorage.setItem("randomBusinessesWithPrizes", JSON.stringify(randomBusinessesWithPrizes));
 
@@ -205,9 +204,7 @@ function insertModalContent(i) {
 
       grid1.innerHTML += `<div class="att animate pop delay-${j}">
       <div class="premio"><p>${business.Nome}</p></div>
-      <input type="button" class="btn11" id="logo" onclick="send(${j})" style="background-image: url('images/${
-        business.logo
-      }');">
+      <input type="button" class="btn11" id="logo" onclick="send(${j})" style="background-image: url('images/${business.logo}');">
       <div>
       <div class="premio"><p>${business.premioCasuale.nome}</p></div>
       <div class="premio1"><p>Punti: 50</p></div>
@@ -221,23 +218,45 @@ function insertModalContent(i) {
 //funzione che prende 3 attività casuali dalla lista businesses
 function getRandomBusinesses() {
   // Estrai casualmente 3 oggetti dall'array businesses
-  const randomBusinesses = [];
+  let randomBusinesses = [];
   const numBusinesses = businesses.length;
   const precedentiEstrazioniJson = localStorage.getItem("Estrazioni_AvventoCutrofiano");
   const precedentiEstrazioni = precedentiEstrazioniJson != null ? JSON.parse(precedentiEstrazioniJson) : [];
+  debugger;
+  const oggi = new Date();
+  const oggiDate = oggi.toLocaleDateString("it-IT");
+  const dataPrecedente = precedentiEstrazioni.dataOggi;
 
-  while (randomBusinesses.length < 3) {
-    const randomIndex = Math.floor(Math.random() * numBusinesses);
-    const randomBusiness = businesses[randomIndex];
+  if (dataPrecedente != oggiDate) {
+    while (randomBusinesses.length < 3) {
+      const randomIndex = Math.floor(Math.random() * numBusinesses);
+      const randomBusiness = businesses[randomIndex];
 
-    // Evita di aggiungere duplicati, e controllo che non escano gli stessi negozi dell'altra volta
-    if (!randomBusinesses.includes(randomBusiness) && !precedentiEstrazioni.some((a) => a.ID == randomBusiness.ID)) {
-      randomBusinesses.push(randomBusiness);
+      // Evita di aggiungere duplicati, e controllo che non escano gli stessi negozi dell'altra volta
+      if (
+        precedentiEstrazioni.arrayRandomBusinesses != undefined &&
+        !precedentiEstrazioni.arrayRandomBusinesses.some((a) => a.ID == randomBusiness.ID)
+      ) {
+        if (!randomBusinesses.includes(randomBusiness)) {
+          randomBusinesses.push(randomBusiness);
+        }
+      } else {
+        if (!randomBusinesses.includes(randomBusiness)) {
+          randomBusinesses.push(randomBusiness);
+        }
+      }
     }
-  }
 
-  //risalvo il nuovo dato
-  localStorage.setItem("Estrazioni_AvventoCutrofiano", JSON.stringify(randomBusinesses));
+    datiEstrazione = {
+      dataOggi: oggiDate,
+      arrayRandomBusinesses: randomBusinesses
+    };
+
+    //risalvo il nuovo dato
+    localStorage.setItem("Estrazioni_AvventoCutrofiano", JSON.stringify(datiEstrazione));
+  } else {
+    randomBusinesses = precedentiEstrazioni.arrayRandomBusinesses.slice();
+  }
 
   // Per ogni business estratto, seleziona un premio a caso
   const businessesWithRandomPrizes = randomBusinesses.map((attivita) => {
