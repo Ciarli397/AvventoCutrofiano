@@ -246,30 +246,34 @@ function getRandomBusinesses() {
         }
       }
     }
+    debugger;
+    const businessesWithRandomPrizes = randomBusinesses.map((attivita) => {
+      const randomIndex = Math.floor(Math.random() * attivita.premi.length);
+      const randomPrize = attivita.premi[randomIndex];
+
+      // Aggiungi il premio selezionato al business
+      return {
+        ...attivita,
+        premioCasuale: randomPrize
+      };
+    });
 
     datiEstrazione = {
       dataOggi: oggiDate,
-      arrayRandomBusinesses: randomBusinesses
+      arrayRandomBusinesses: businessesWithRandomPrizes
     };
 
     //risalvo il nuovo dato
     localStorage.setItem("Estrazioni_AvventoCutrofiano", JSON.stringify(datiEstrazione));
+
+    randomBusinesses = businessesWithRandomPrizes.slice();
   } else {
     randomBusinesses = precedentiEstrazioni.arrayRandomBusinesses.slice();
   }
 
   // Per ogni business estratto, seleziona un premio a caso
-  const businessesWithRandomPrizes = randomBusinesses.map((attivita) => {
-    const randomIndex = Math.floor(Math.random() * attivita.premi.length);
-    const randomPrize = attivita.premi[randomIndex];
 
-    // Aggiungi il premio selezionato al business
-    return {
-      ...attivita,
-      premioCasuale: randomPrize
-    };
-  });
-  return businessesWithRandomPrizes;
+  return randomBusinesses;
 }
 
 // Funzione per aggiungere l'indice alla lista
